@@ -1,0 +1,60 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8" />
+        <title>MyBlog</title>
+        <link href="{% static "bootstrap/css/bootstrap.min.css"%}" rel="stylesheet">
+        <link href="{% static "bootstrap/css/bootstrap-responsive.css" %}" rel="stylesheet">
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <script src="{% static "bootstrap/js/bootstrap.js" %}"></script>
+        {% block extrahead %}
+        {% endblock %}
+        <script type="text/javascript">
+        $(function(){
+        {% block jquery %}
+        {% endblock %}
+        });
+        </script>
+    </head>
+<body>
+
+<header class="intro">
+        <div class="banner">
+            <h1>Обитель</h1>
+            <h2>моего безумия</h2>
+        </div>
+
+        <div class="summary">
+            <div class="summary_text">
+                <h4 class="door">Тёмная комната.</h4>
+                <p class="door">Пожалуйста закрывайте дверь! </p>
+                <p class="darkness">Иначе тьма выберется наружу.</p>
+            </div>
+
+        </div>
+    </header>
+
+    <aside class="sidebar">
+        <ul>
+            <li><a href="{% url 'blog:news' %}">Архив статей</a> </li>
+            <li><a href="https://www.instagram.com/irafit/">Instagram</a>  </li>
+            <li><a href="http://vk.com/irafit">В контакте</a>      </li>
+        </ul>
+    </aside>
+
+    <section class="article">
+        <div class="news">
+            <div class="news_text">
+                {% block content %}Empty page{% endblock %}
+            </div> <!-- container -->
+        </div>
+        <div class="dontknow"></div>
+    </section>
+
+
+
+</body>
+</html>

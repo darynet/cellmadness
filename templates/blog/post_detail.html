@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+{% block content %}
+    <p>{{ datetime }}</p>
+    <!-- <h2>{{ title }}</h2> -->
+    <p>{{ content }}</p>
+{% endblock %}
+
+</body>
+</html>

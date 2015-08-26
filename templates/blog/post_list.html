@@ -1,0 +1,35 @@
+{% extends 'blog/base.html' %}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+{% block content %}
+    {% for post in posts %}
+        <p class='datetime'>{{ post.datetime }}</p>
+        {{ post.content|truncatewords:20|safe}}
+        <a href="{% url 'blog:one_new' post.id %}">Читать полностью&raquo;</a>
+    {% empty %}
+    <p>Нет постов</p>
+    {% endfor %}
+    <br>
+    <br>
+    <div id="pages" align="center">
+        {% if posts.has_previous %}
+            <a href="?page={{ posts.previous_page_number }}">Previous</a>
+        {% endif %}
+    <span class="current">
+        Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+    </span>
+        {% if posts.has_next %}
+            <a href="?page={{ posts.next_page_number }}">Next</a>
+        {% endif %}
+    </div>
+
+{% endblock %}
+
+</body>
+</html>
